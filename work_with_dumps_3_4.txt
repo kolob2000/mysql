@@ -1,0 +1,18 @@
+##########################################################
+3.
+делаем дамп
+mysqldump example > dump_example.sql
+______
+разворачиваем дамп
+заходим в mysql и сперва создаем базу в которую развернем дамп
+
+create database sample;
+exit
+mysql sample < dump_example.sql
+
+############################################################
+4.
+mysqldump --where="true limit 100" mysql help_keyword > help_keywords.sql
+
+
+
