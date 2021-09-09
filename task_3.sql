@@ -3,7 +3,7 @@
 единственное не 100, а 50 поскольку у меня ограраничения в бесплатной версии
 и также возникла проблема и в dbforge и в filldb.info в
 таблице friend_requests из за добавления в таблицу условия
-alter table friend_requests add check (initiator_user_id <> friend_requests.target_user_id)
+alter table friend_requests add check (initiator_user_id <> target_user_id)
 таблица не генерировалась пока не закомментировал его. почему не пойму.
 */
 
