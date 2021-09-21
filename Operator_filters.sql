@@ -12,3 +12,9 @@ ALTER TABLE users MODIFY updated_at DATETIME;
 SELECT *
 FROM storehouses_products
 ORDER BY  value = 0 ASC, value ASC;
+
+-- 4.
+SELECT * FROM users WHERE date_format(birthday_at, '%M') IN ('may', 'august');
+
+-- 5.
+SELECT * FROM catalogs WHERE id IN (5, 1, 2) ORDER BY id = 5 DESC , id = 1 DESC, id =2 DESC ;
