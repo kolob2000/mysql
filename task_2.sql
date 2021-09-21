@@ -1,2 +1,0 @@
-ALTER TABLE users MODIFY created_at DATETIME;
-ALTER TABLE users MODIFY updated_at DATETIME;
