@@ -20,7 +20,7 @@ INSERT INTO coffee_items(name, description, quantity)
 VALUES ((SELECT firstname FROM vk.users WHERE users.id = 5),
         'New coffee)))',
         33);
-INSERT INTO coffee_items SELECT id, firstname, lastname, phone FROM vk.users WHERE id > 5;
+INSERT INTO coffee_items SELECT id, firstname, lastname, phone FROM vk.users WHERE id BETWEEN 5 AND 25;
 
 -- R - read
 
