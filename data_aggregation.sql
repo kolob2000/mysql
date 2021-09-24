@@ -1,18 +1,16 @@
 -- 1.
 
-SELECT floor(AVG(timestampdiff(YEAR, birthday_at, NOW()))) AS average_age from users;
+SELECT FLOOR(AVG(TIMESTAMPDIFF(YEAR, birthday_at, NOW()))) AS average_age
+FROM users;
 
-Set @vari := 1;
-SELECT @vari = value * @vari FROM storehouses_products WHERE value != 0;
+-- 2.
 
-SELECT value FROM storehouses_products WHERE value != 0;
-DROP TABLE IF EXISTS temp;
-CREATE TABLE temp(val int DEFAULT 2);
-INSERT INTO temp VALUES (2), (3), (4),(5),(6);
-
--- 2ю
 -- 3.
-SELECT CEIL(EXP(SUM(LOG(value)))) FROM storehouses_products WHERE value != 0;
+SELECT ROUND(EXP(SUM(LOG(value))))
+FROM storehouses_products
+WHERE value != 0;
+
+
 -- вот такой вариант без погрешностей
 DROP PROCEDURE proizved;
 CREATE PROCEDURE proizved()
@@ -33,7 +31,7 @@ BEGIN
         SET proiz := b * proiz;
     END LOOP;
     CLOSE cur_for_proiz;
-    SELECT proiz as proi;
+    SELECT proiz AS proi;
 
 END;
 
