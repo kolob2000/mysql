@@ -1,9 +1,13 @@
 -- 1.
+use shop;
+SELECT * FROM users WHERE id in (SELECT DISTINCT user_id FROM orders);
+
 
 -- 2.
 USE shop;
 SELECT name AS product_item, (SELECT name FROM catalogs WHERE id = products.catalog_id) AS catalog_item
 FROM products;
+
 
 -- 3.
 USE aeroflot;
