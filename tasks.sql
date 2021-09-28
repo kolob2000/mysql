@@ -20,17 +20,29 @@ WHERE user_id IN
 -- 4.
 
 SELECT IF(
-                   (SELECT COUNT(user_id) AS sum_of_likes
+                   (SELECT COUNT(user_id) AS sum_of_likes_female
                     FROM likes
                     WHERE user_id IN
                           (SELECT *
                            FROM (SELECT user_id FROM profiles WHERE profiles.gender = 'F') AS t1)
                    )
                    >
-                   (SELECT COUNT(user_id) AS sum_of_likes
+                   (SELECT COUNT(user_id) AS sum_of_likes_male
                     FROM likes
                     WHERE user_id IN
                           (SELECT *
                            FROM (SELECT user_id FROM profiles WHERE profiles.gender = 'M') AS t1)
                    ),
                    'Female', 'Male') AS man_or_women;
+
+-- 5.
+SELECT users.id,
+       (SELECT CONCAT(firstname, ' ', lastname) FROM profiles WHERE profiles.user_id = users.id) AS 'name',
+       ((SELECT COUNT(from_user_id) FROM messages WHERE from_user_id = users.id) +
+        (SELECT COUNT(likes.user_id) FROM likes WHERE likes.user_id = users.id))                 AS 'activity'
+FROM users
+ORDER BY activity
+LIMIT 10;
+
+-- и так далее можно по аналогии складывать кроме количества лайков и сообщений  количество id инициаторов
+-- из любых таблиц и выводить у кого меньше всего действий
