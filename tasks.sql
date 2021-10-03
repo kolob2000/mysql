@@ -18,3 +18,41 @@ FROM likes
                  AND TIMESTAMPDIFF(YEAR, birthday, CURDATE()) > 0) p
               ON p.user_id = likes.user_id;
 
+-- 3.
+
+SELECT IF(
+                   (SELECT COUNT(l.user_id) AS sum_of_likes_female
+                    FROM likes l
+                             JOIN
+                         (SELECT p.user_id
+                          FROM profiles p
+                          WHERE p.gender = 'F'
+                         ) p ON l.user_id = p.user_id
+                   )
+                   >
+                   (SELECT COUNT(l.user_id) AS sum_of_likes_female
+                    FROM likes l
+                             JOIN
+                         (SELECT p.user_id
+                          FROM profiles p
+                          WHERE p.gender = 'M'
+                         ) p ON l.user_id = p.user_id
+                   ),
+                   'Female', 'Male') AS man_or_women;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
