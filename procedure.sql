@@ -1,4 +1,5 @@
 -- 1.
+
 DROP FUNCTION IF EXISTS hello;
 DELIMITER //
 CREATE FUNCTION hello()
@@ -18,3 +19,7 @@ BEGIN
 END //
 DELIMITER ;
 SELECT hello();
+
+-- 2.
+
+CREATE TRIGGER ;
