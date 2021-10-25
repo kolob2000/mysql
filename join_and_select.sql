@@ -48,4 +48,3 @@ SELECT CONCAT(p.first_name, ' ', p.last_name)                               AS n
        (SELECT COUNT(*) FROM movie_ratings mr WHERE mr.user_id = p.user_id) AS rate_activities
 FROM profiles p
          JOIN users u ON p.user_id = u.id;
-

@@ -294,6 +294,4 @@ BEGIN
 END //
 DELIMITER ;
 CALL reviews_likes_filler;
-
-
 -- --------------------------------------
